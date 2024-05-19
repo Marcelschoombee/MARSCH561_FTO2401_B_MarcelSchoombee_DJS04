@@ -348,7 +348,7 @@ template.innerHTML = /* html */ `
 `;
 
 export class BookPreview extends HTMLElement {
-  #inner = this.attachShadow({ mode: "closed" });
+  #inner = this.attachShadow({ mode: "open" });
   connectedCallback() {
     const node = template.content.cloneNode(true);
     this.#inner.appendChild(node);
