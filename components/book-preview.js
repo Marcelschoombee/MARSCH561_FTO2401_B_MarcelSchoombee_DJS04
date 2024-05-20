@@ -1,8 +1,7 @@
 
-customElements.define('book-preview', class extends HTMLElement {
-  connectedCallback() {
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.innerHTML =  /* html */ `
+const template = document.createElement('template');
+
+template.innerHTML = /* html */ `
 
 <dialog class="overlay" data-list-active>
   <slot>
@@ -22,8 +21,12 @@ customElements.define('book-preview', class extends HTMLElement {
 </dialog>
 `;
 
-
+class BookPreview extends HTMLElement {
+  #inner = this.attachShadow({ mode: "closed" });
+  connectedCallback() {
+    const node = template.content.cloneNode(true);
+    this.#inner.appendChild(node);
   }
-});
+}
 
-
+customElements.define('book-preview', BookPreview);
