@@ -26,6 +26,9 @@
 
   <script type="module" src="./scripts.js"></script>
   <script type="module" src="./data.js"></script>
+  <script type="module" src="./components/book-preview.js"></script>
+  <script type="module" src="./components/search-modal.js"></script>
+  <script type="module" src="./components/settings-modal.js"></script>
 </head>
 
 <body>
@@ -73,14 +76,23 @@
     </div>
   </header>
 
+  <main class="list">
+    <slot>
+      <div class="list__items" data-list-items></div>
+      <div class="list__message" data-list-message>No results found. Your filters might be too narrow.</div>
+      <button class="list__button" data-list-button></button>
+    </slot>
+  </main>
 
-  <book-preview data-list-items data-list-message data-list-active data-search-genres data-search-authors
-    data-list-button data-list-close data-list-blur data-list-image data-list-title
-    data-list-description></book-preview>
-  <search-Modal data-search-cancel data-search-form data-search-overlay data-search-title data-search-genres
+  <book-preview data-list-close data-list-active data-list-blur data-list-image data-list-title data-list-subtitle
+    data-list-description>
+    <slot name="overlay">
+    </slot>
+  </book-preview>
+  <search-modal data-search-cancel data-search-form data-search-overlay data-search-title data-search-genres
     data-search-authors></search-modal>
-  <settings-moda data-settings-theme data-settings-cancel data-settings-overlay data-settings-form
-    data-settings-theme></settings-moda>
+  <settings-modal data-settings-theme data-settings-cancel data-settings-overlay data-settings-form
+    data-settings-theme></settings-modal>
 
   <div class="backdrop"></div>
 </body>

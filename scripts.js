@@ -6,8 +6,6 @@ import './components/search-modal.js';
 import './components/settings-modal.js';
 
 
-
-
 let page = 1;
 let matches = books;
 
